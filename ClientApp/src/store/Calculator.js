@@ -19,11 +19,10 @@ export const actionCreators = {
       const taxData = await response.json();
   
       dispatch({ type: receiveCalculatorDataType, taxData });
+      dispatch({type: performCalculationType});
 
 
 
-        // var taxData = [0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10]
-        // dispatch({ type: requestCalculatorDataType, taxData });
     },
 
     bracketChange: (bracketIndex) => (dispatch, getState) => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Calculator';
+import Loader from './Loader'
 
 class TeyCalc extends Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class TeyCalc extends Component {
     // This method runs when the component is first added to the page
     // const startDateIndex = parseInt(this.props.match.params.startDateIndex, 10) || 0;
     this.props.requestCalculatorData();
-    this.props.calculate();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,19 +31,22 @@ class TeyCalc extends Component {
     this.props.calculate();
   }
   render() {
-    let comp = this.props.isLoading ? <Loader /> : <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />;
+    // let comp = this.props.isLoading ? <Loader /> : <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />;
     return (
       <div>
         <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
-        {comp}
+        <Loader isLoading={this.props.isLoading} message="Loading Calculator...">
+            <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />
+        </Loader>
+        {/* {comp} */}
       </div>
     );
   }
 }
 
-function Loader(props) {
-    return <span>Loading Calculator...</span>;
-}
+// function Loader(props) {
+//     return <span>Loading Calculator...</span>;
+// }
 
 function Calculator(props) {
   return (
