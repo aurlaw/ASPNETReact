@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNETReact.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASPNETReact.Controllers
@@ -26,19 +27,11 @@ namespace ASPNETReact.Controllers
             });
         }
 
-        public class WeatherForecast
+        [HttpGet("[action]")]
+        public TaxInfo TaxInformation() => new TaxInfo()
         {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
-        }
+            TaxYield = 6.04,
+            TaxBracket = new double[] { 0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10 }
+        };
     }
 }

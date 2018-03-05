@@ -31,7 +31,7 @@ export default props => (
         </LinkContainer>
         <LinkContainer to={'/calculator'}>
           <NavItem>
-            <Glyphicon glyph='th-list' /> TEY Calculator
+            <Glyphicon glyph='list-alt' /> TEY Calculator
           </NavItem>
         </LinkContainer>
       </Nav>

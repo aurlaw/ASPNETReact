@@ -1,14 +1,29 @@
 const requestCalculatorDataType = 'REQUEST_CALCULATOR_DATA';
+const receiveCalculatorDataType = 'RECEIVE_CALCULATOR_DATA';
 const taxBracketChange = 'TAX_BRACKET_CHANGE';
 const performCalculationType = 'PERFORM_CALCULATION';
-const initialState = { teYield: 6.04, taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0};
+const initialState = { teYield: 0, taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
 
 
 export const actionCreators = {
     requestCalculatorData: () => async (dispatch, getState) => {    
+      // if (startDateIndex === getState().weatherForecasts.startDateIndex) {
+      //   // Don't issue a duplicate request (we already have or are loading the requested data)
+      //   return;
+      // }
+  
+      dispatch({ type: requestCalculatorDataType });
+  
+      const url = `api/SampleData/TaxInformation`;
+      const response = await fetch(url);
+      const taxData = await response.json();
+  
+      dispatch({ type: receiveCalculatorDataType, taxData });
 
-        var taxData = [0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10]
-      dispatch({ type: requestCalculatorDataType, taxData });
+
+
+        // var taxData = [0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10]
+        // dispatch({ type: requestCalculatorDataType, taxData });
     },
 
     bracketChange: (bracketIndex) => (dispatch, getState) => {
@@ -25,12 +40,29 @@ export const actionCreators = {
   export const reducer = (state, action) => {
     state = state || initialState;
   
+    // if (action.type === requestCalculatorDataType) {
+    //   return {
+    //     ...state,
+    //     taxBrackets: action.taxData
+    //   };
+    // }
     if (action.type === requestCalculatorDataType) {
       return {
         ...state,
-        taxBrackets: action.taxData
+        isLoading: true
       };
     }
+  
+    if (action.type === receiveCalculatorDataType) {
+      return {
+        ...state,
+        teYield: action.taxData.taxYield,
+        taxBrackets: action.taxData.taxBracket,
+        isLoading: false
+      };
+    }
+
+
     if (action.type === taxBracketChange) {
         return {
           ...state,

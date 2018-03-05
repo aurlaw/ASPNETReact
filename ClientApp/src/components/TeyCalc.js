@@ -31,16 +31,21 @@ class TeyCalc extends Component {
     this.props.calculate();
   }
   render() {
+    let comp = this.props.isLoading ? <Loader /> : <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />;
     return (
       <div>
         <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
-        {renderCalculator(this.props, this.handleChange, this.handleCalculate)}
+        {comp}
       </div>
     );
   }
 }
 
-function renderCalculator(props, handleChange, handleCalculate) {
+function Loader(props) {
+    return <span>Loading Calculator...</span>;
+}
+
+function Calculator(props) {
   return (
         <fieldset>
             <div className="tey-fund-yield-label tey-value-display">
@@ -51,7 +56,7 @@ function renderCalculator(props, handleChange, handleCalculate) {
             </div>
             <div className="tey-column-display">
                 <div className="left">
-                    <select id="tey-federal-tax-rate" name="federal-tax-rate" value={props.taxBrackets[props.taxBracketsIndex]} onChange={handleChange}>
+                    <select id="tey-federal-tax-rate" name="federal-tax-rate" value={props.taxBrackets[props.taxBracketsIndex]} onChange={props.onHandleChange}>
                     {props.taxBrackets.map(bracket =>
                     <option key={bracket} value={bracket}>{(bracket * 100).toFixed(2)}%</option>
                     )}
@@ -70,7 +75,7 @@ function renderCalculator(props, handleChange, handleCalculate) {
             <hr/>
             Equiv Yield: <strong>{props.taxEquivYield.toFixed(2)} %</strong>
             <div className="form-group">
-                <button type="button" className="tey-btn tey-btn--calculate" onClick={handleCalculate}>Calculate</button>
+                <button type="button" className="tey-btn tey-btn--calculate" onClick={props.onHandleCalculate}>Calculate</button>
             </div>
         </fieldset>   
   );
