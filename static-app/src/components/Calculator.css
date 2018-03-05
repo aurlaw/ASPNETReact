@@ -1,0 +1,46 @@
+
+.container {
+    margin-top: 2em;
+}
+.slideIn, .slideOut {
+    max-height: 0;            
+    overflow-y: hidden;
+    transition: max-height 0.8s ease-in-out;
+}
+.slideIn {
+    max-height: 320px ;       
+}
+fieldset {
+    width: 25%;
+    margin: auto;
+    border: 1px solid #ccc;
+    background: #ddd;
+    padding: 1em;
+    border-radius: .35rem;
+}
+button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;    
+    background:#0275d8;
+    border: 1px solid #0275d8;
+    color: #fff;
+    font-weight: bold;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+.form-group {clear: both; }
+.form-group.footer {clear: both; margin-top: 3em;}
+.left {
+    float: left;
+    width: 49%;
+}
+.right {
+    float: right;
+    width: 49%;
+}

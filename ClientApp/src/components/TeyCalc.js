@@ -13,17 +13,9 @@ class TeyCalc extends Component {
 
   componentWillMount() {
     // This method runs when the component is first added to the page
-    // const startDateIndex = parseInt(this.props.match.params.startDateIndex, 10) || 0;
     this.props.requestCalculatorData();
   }
-
-  componentWillReceiveProps(nextProps) {
-    // This method runs when incoming props (e.g., route params) change
-    // const startDateIndex = parseInt(nextProps.match.params.startDateIndex, 10) || 0;
-    // this.props.requestWeatherForecasts(startDateIndex);
-  }
   handleChange(event) {
-    //   console.log(event.target.selectedIndex);
     this.props.bracketChange(event.target.selectedIndex);
     this.props.calculate();
   }
@@ -31,22 +23,17 @@ class TeyCalc extends Component {
     this.props.calculate();
   }
   render() {
-    // let comp = this.props.isLoading ? <Loader /> : <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />;
     return (
       <div>
         <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
         <Loader isLoading={this.props.isLoading} message="Loading Calculator...">
             <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />
         </Loader>
-        {/* {comp} */}
       </div>
     );
   }
 }
 
-// function Loader(props) {
-//     return <span>Loading Calculator...</span>;
-// }
 
 function Calculator(props) {
   return (
