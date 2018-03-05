@@ -31,6 +31,7 @@ namespace ASPNETReact.Controllers
         public TaxInfo TaxInformation() => new TaxInfo()
         {
             TaxYield = 6.04,
+            TaxYieldLastUpdated = DateTime.Now,
             TaxBracket = new double[] { 0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10 }
         };
     }

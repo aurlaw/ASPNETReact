@@ -2,7 +2,7 @@ const requestCalculatorDataType = 'REQUEST_CALCULATOR_DATA';
 const receiveCalculatorDataType = 'RECEIVE_CALCULATOR_DATA';
 const taxBracketChange = 'TAX_BRACKET_CHANGE';
 const performCalculationType = 'PERFORM_CALCULATION';
-const initialState = { teYield: 0, taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
+const initialState = { teYield: 0, lastUpdated: new Date(), taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
 
 
 export const actionCreators = {
@@ -57,6 +57,7 @@ export const actionCreators = {
         ...state,
         teYield: action.taxData.taxYield,
         taxBrackets: action.taxData.taxBracket,
+        lastUpdated: new Date(action.taxData.taxYieldLastUpdated),
         isLoading: false
       };
     }

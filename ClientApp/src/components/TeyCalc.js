@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Calculator';
 import Loader from './Loader'
+import {converters} from '../utils/conversion'
 
 class TeyCalc extends Component {
     constructor(props) {
@@ -41,7 +42,7 @@ function Calculator(props) {
             <div className="tey-fund-yield-label tey-value-display">
                 <strong className="left">{props.teYield.toFixed(2)}% </strong>
                 <span className="right">Tax-Exempt Yield for NVG<br/>
-                    <em><small>As of 2/28/2018</small></em>
+                    <em><small>As of {converters.toFormattedDate(props.lastUpdated)}</small></em>
                 </span>
             </div>
             <div className="tey-column-display">
