@@ -1,3 +1,7 @@
+// IE 10 => support
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
