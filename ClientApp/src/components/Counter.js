@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../store/Counter';
 
 const Counter = props => (
-  <div>
+  <React.Fragment>
     <h1>Counter</h1>
 
     <p>This is a simple example of a React component.</p>
@@ -12,7 +12,7 @@ const Counter = props => (
     <p>Current count: <strong>{props.count}</strong></p>
 
     <button onClick={props.increment}>Increment</button>
-  </div>
+  </React.Fragment>
 );
 
 export default connect(

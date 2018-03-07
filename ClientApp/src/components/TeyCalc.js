@@ -25,12 +25,12 @@ class TeyCalc extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
         <Loader isLoading={this.props.isLoading} message="Loading Calculator...">
             <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />
         </Loader>
-      </div>
+      </React.Fragment>
     );
   }
 }
