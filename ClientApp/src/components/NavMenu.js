@@ -34,6 +34,11 @@ export default props => (
             <Glyphicon glyph='list-alt' /> TEY Calculator
           </NavItem>
         </LinkContainer>
+        <LinkContainer to={'/quiz'}>
+          <NavItem>
+            <Glyphicon glyph='gift' /> Quiz
+          </NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

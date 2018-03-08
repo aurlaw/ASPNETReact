@@ -12,5 +12,6 @@ export default () => (
     <Route path='/counter' component={Counter} />
     <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
     <Route path='/calculator' component={TeyCalc} />
+    <Route path='/quiz' component={TeyCalc} />
   </Layout>
 );

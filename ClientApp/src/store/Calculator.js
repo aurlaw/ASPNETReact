@@ -5,7 +5,7 @@ const performCalculationType = 'PERFORM_CALCULATION';
 const initialState = { teYield: 0, lastUpdated: new Date(), taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
 
 
-export const actionCreators = {
+  export const actionCreators = {
     requestCalculatorData: () => async (dispatch, getState) => {    
       // if (startDateIndex === getState().weatherForecasts.startDateIndex) {
       //   // Don't issue a duplicate request (we already have or are loading the requested data)

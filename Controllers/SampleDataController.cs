@@ -34,5 +34,70 @@ namespace ASPNETReact.Controllers
             TaxYieldLastUpdated = DateTime.Now,
             TaxBracket = new double[] { 0.408, 0.388, 0.358, 0.278, 0.24, 0.22, 0.12, 0.10 }
         };
+
+
+        [HttpGet("[action]")]
+        public Quiz QuizInformation()
+        {
+            var results = new List<Result>
+            {
+                new Result{Name = "Result 1"},
+                new Result{Name = "Result 2"},
+                new Result{Name = "Result 3"}
+            };
+            var questions = new List<Question>();
+            questions.Add(new Question{Name  ="Question 1"});
+            questions.Add(new Question{Name  ="Question 2"});
+            questions.Add(new Question{Name  ="Question 3"});
+            questions.Add(new Question{Name  ="Question 4"});
+
+            //Q1
+            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 1"});
+            questions[0].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
+            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 2"});
+            questions[0].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
+            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 3"});
+            questions[0].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
+            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 4"});
+            questions[0].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
+
+
+            //Q2
+            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 1"});
+            questions[1].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
+            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 2"});
+            questions[1].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
+            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 3"});
+            questions[1].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
+            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 4"});
+            questions[1].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
+
+            //Q3
+            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 1"});
+            questions[2].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
+            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 2"});
+            questions[2].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
+            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 3"});
+            questions[2].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
+            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 4"});
+            questions[2].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
+
+            //Q4
+            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 1"});
+            questions[3].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
+            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 2"});
+            questions[3].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
+            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 3"});
+            questions[3].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
+            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 4"});
+            questions[3].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
+
+
+            return new Quiz
+            {
+                Results = results,
+                Questions = questions
+            };
+        }
     }
 }
