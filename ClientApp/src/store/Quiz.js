@@ -11,23 +11,28 @@ const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [],
       //   // Don't issue a duplicate request (we already have or are loading the requested data)
       //   return;
       // }
-      console.log('requestQuizData');
       dispatch({ type: requestQuizDataType });
   
-      // const url = `api/SampleData/QuizInformation`;
-      // const response = await fetch(url);
-      // const quizData = await response.json();
+      const url = `api/SampleData/QuizInformation`;
+      const response = await fetch(url);
+      const quizData = await response.json();
   
-      // dispatch({ type: receiveQuizDataType, quizData });
+      dispatch({ type: receiveQuizDataType, quizData });
     },
 
     nextQuestion: (questionAnswerIndex) => (dispatch, getState) => {
-        dispatch({type: quizQuestionChangeType, questionAnswerIndex});
+      const { quiz } = getState();
+
+       if(quiz.quizData.questions.length > questionAnswerIndex + 1)
+       {
+          dispatch({type: quizQuestionChangeType, questionAnswerIndex});
+       }
+       else {
+        dispatch({type: quizGetResultType, questionAnswerIndex});
+      }
+
     },
 
-    getResult: () => (dispatch, getState) => {
-        dispatch({type: quizGetResultType});
-    }
     
   };
 
@@ -55,7 +60,7 @@ const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [],
 
         return {
           ...state,
-          currentQuestion: state.currentQuestion++,
+          currentQuestion: state.currentQuestion + 1,
           selectedAnswers: [...state.selectedAnswers, action.questionAnswerIndex]
         };
       }  
@@ -63,8 +68,11 @@ const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [],
 
     if (action.type === quizGetResultType) {
         //TODO: function to return result index
+        let answer = [...state.selectedAnswers, action.questionAnswerIndex];
+        const resultIndx = 0;
       return {
         ...state,
+        selectedAnswers: answer,
         selectedResult: state.quizData.results[0]
       };
     }
