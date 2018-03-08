@@ -2,23 +2,23 @@ const requestQuizDataType = 'REQUEST_QUIZ_DATA';
 const receiveQuizDataType = 'RECEIVE_QUIZ_DATA';
 const quizQuestionChangeType = 'QUIZ_QUESTION_CHANGE';
 const quizGetResultType = 'QUIZ_GET_RESULT';
-const initialState = { quizData: {}, currentQuestion: 0, selectedAnswers: [], selectedResult: null,  isLoading: false };
+const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [], selectedResult: null,  isLoading: false };
 
 
-export const actionCreators = {
+  export const actionCreators = {
     requestQuizData: () => async (dispatch, getState) => {    
       // if (startDateIndex === getState().weatherForecasts.startDateIndex) {
       //   // Don't issue a duplicate request (we already have or are loading the requested data)
       //   return;
       // }
-  
+      console.log('requestQuizData');
       dispatch({ type: requestQuizDataType });
   
-      const url = `api/SampleData/QuizInformation`;
-      const response = await fetch(url);
-      const quizData = await response.json();
+      // const url = `api/SampleData/QuizInformation`;
+      // const response = await fetch(url);
+      // const quizData = await response.json();
   
-      dispatch({ type: receiveQuizDataType, quizData });
+      // dispatch({ type: receiveQuizDataType, quizData });
     },
 
     nextQuestion: (questionAnswerIndex) => (dispatch, getState) => {
@@ -45,7 +45,7 @@ export const actionCreators = {
     if (action.type === receiveQuizDataType) {
       return {
         ...state,
-        quizData: action.taxData.quizData,
+        quizData: action.quizData,
         isLoading: false
       };
     }
