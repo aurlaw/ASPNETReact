@@ -31,12 +31,12 @@ class Quiz extends Component {
       if(this.props.selectedResult === null) 
       {
             return (
-                <React.Fragment>
+                <div className="row">
                 <h1>Quiz</h1>
                 <Loader isLoading={this.props.isLoading} message="Loading Quiz...">
                     <QuizQuestionsContainer {...this.props.currentQuestion} onHandleAnswer={this.handleAnswer} />
                 </Loader>
-                </React.Fragment>
+                </div>
             );
         } else {
             return (
@@ -52,12 +52,14 @@ function QuizQuestionsContainer(props) {
         return null;
 
     return (
-        <React.Fragment>
+        <div className="row">
             <Question name={props.name} />
-            {props.answers.map((answer, index) =>
-                <Answer key={index} value={index} name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
-            )}
-        </React.Fragment>
+                {props.answers.map((answer, index) =>
+                    <div className="row buttons">
+                    <Answer key={index} value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
+                    </div>
+                )}
+        </div>
     );
   }
 

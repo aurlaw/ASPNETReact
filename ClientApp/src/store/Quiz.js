@@ -11,94 +11,107 @@ const getQuestion = (quizData, questionIndex) => {
   return q;
 }
 
-  export const actionCreators = {
-    requestQuizData: () => async (dispatch, getState) => {    
-      // if (startDateIndex === getState().weatherForecasts.startDateIndex) {
-      //   // Don't issue a duplicate request (we already have or are loading the requested data)
-      //   return;
-      // }
-      dispatch({ type: requestQuizDataType });
+const getQuizResult = (questionsArr, selectedAnswersArr) => {
+  let resultsArr = [];
+  selectedAnswersArr.map((answer, aInx) => {
+    resultsArr = questionsArr[aInx].answers[answer].weightedScore.map((score, sInx) => {
+       // iterate chosen answers weighted score and sum into new array
+        return score + (resultsArr[sInx] !== undefined ? resultsArr[sInx] : 0);
+    });
+    return 0;
+  });
+  // reduce result to best index based on max val
+  let resultIndex = resultsArr.reduce((bestInx, curVal, curInx, arr) => curVal > arr[bestInx] ? curInx : bestInx, 0);  
   
-      const url = `api/SampleData/QuizInformation`;
-      const response = await fetch(url);
-      const quizData = await response.json();
-  
-      dispatch({ type: receiveQuizDataType, quizData });
-    },
+  return resultIndex;  
+}
 
-    nextQuestion: (questionAnswerIndex) => (dispatch, getState) => {
-      const { quiz } = getState();
 
-       if(quiz.quizData.questions.length > questionAnswerIndex + 1)
-       {
-          dispatch({type: quizQuestionChangeType, questionAnswerIndex});
-       }
-       else {
-          //TODO: function to return result index
-          let answer = [...quiz.selectedAnswers, questionAnswerIndex];
-          const resultIndx = 0;
-          let result = quiz.quizData.results[resultIndx]; 
-          dispatch({type: quizGetResultType, answer, result});
-      }
+export const actionCreators = {
+  requestQuizData: () => async (dispatch, getState) => {    
+    // if (startDateIndex === getState().weatherForecasts.startDateIndex) {
+    //   // Don't issue a duplicate request (we already have or are loading the requested data)
+    //   return;
+    // }
+    dispatch({ type: requestQuizDataType });
 
-    },
-    resetQuiz: () => (dispatch, getState) => {
-      dispatch({type: quizResetType});
+    const url = `api/SampleData/QuizInformation`;
+    const response = await fetch(url);
+    const quizData = await response.json();
+
+    dispatch({ type: receiveQuizDataType, quizData });
+  },
+
+  nextQuestion: (answerIndex) => (dispatch, getState) => {
+    const { quiz } = getState();
+    if(quiz.quizData.questions.length > quiz.currentQuestionIndex + 1)
+    {
+      dispatch({type: quizQuestionChangeType, answerIndex});
     }
-  };
+    else {
+      let answersArr = [...quiz.selectedAnswers, answerIndex];
+      const resultIndx = getQuizResult(quiz.quizData.questions, answersArr);
+      let result = quiz.quizData.results[resultIndx]; 
+      dispatch({type: quizGetResultType, answersArr, result});
+    }
 
-  export const reducer = (state, action) => {
-    state = state || initialState;
-  
-    if (action.type === requestQuizDataType) {
+  },
+  resetQuiz: () => (dispatch, getState) => {
+    dispatch({type: quizResetType});
+  }
+};
+
+export const reducer = (state, action) => {
+  state = state || initialState;
+
+  if (action.type === requestQuizDataType) {
+    return {
+      ...state,
+      isLoading: true
+    };
+  }
+
+  if (action.type === receiveQuizDataType) {
+    return {
+      ...state,
+      quizData: action.quizData,
+      currentQuestion:  getQuestion(action.quizData, state.currentQuestionIndex),  
+      isLoading: false
+    };
+  }
+
+
+  if (action.type === quizQuestionChangeType) {
+      var newQuesInx = state.currentQuestionIndex + 1;
       return {
         ...state,
-        isLoading: true
+        currentQuestionIndex: newQuesInx,
+        currentQuestion:  getQuestion(state.quizData, newQuesInx),  
+        selectedAnswers: [...state.selectedAnswers, action.answerIndex]
       };
-    }
+    }  
+
+  if (action.type === quizGetResultType) {
+    return {
+      ...state,
+      selectedAnswers: action.answersArr,
+      selectedResult: action.result
+    };
+  }
+
+  if(action.type === quizResetType) {
+    return {
+      ...state,
+      currentQuestionIndex: initialState.currentQuestionIndex, 
+      currentQuestion: getQuestion(state.quizData, initialState.currentQuestionIndex), 
+      selectedAnswers: initialState.selectedAnswers, 
+      selectedResult: initialState.selectedResult
+    };
+  }
+
+  return state;
+};
   
-    if (action.type === receiveQuizDataType) {
-      return {
-        ...state,
-        quizData: action.quizData,
-        currentQuestion:  getQuestion(action.quizData, state.currentQuestionIndex),  
-        isLoading: false
-      };
-    }
-
-
-    if (action.type === quizQuestionChangeType) {
-        var newQuesInx = state.currentQuestionIndex + 1;
-        return {
-          ...state,
-          currentQuestionIndex: newQuesInx,
-          currentQuestion:  getQuestion(state.quizData, newQuesInx),  
-          selectedAnswers: [...state.selectedAnswers, action.questionAnswerIndex]
-        };
-      }  
-
-
-    if (action.type === quizGetResultType) {
-      return {
-        ...state,
-        selectedAnswers: action.answer,
-        selectedResult: action.result
-      };
-    }
-
-    if(action.type === quizResetType) {
-      return {
-        ...state,
-        currentQuestionIndex: initialState.currentQuestionIndex, 
-        currentQuestion: getQuestion(state.quizData, initialState.currentQuestionIndex), 
-        selectedAnswers: initialState.selectedAnswers, 
-        selectedResult: initialState.selectedResult
-      };
-    }
-  
-    return state;
-  };
-    
 
 /*
 {

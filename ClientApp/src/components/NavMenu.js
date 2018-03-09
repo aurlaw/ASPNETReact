@@ -26,17 +26,17 @@ export default props => (
         </LinkContainer>
         <LinkContainer to={'/fetchdata'}>
           <NavItem>
-            <Glyphicon glyph='th-list' /> Fetch data
+            <Glyphicon glyph='cd' /> Fetch data
           </NavItem>
         </LinkContainer>
         <LinkContainer to={'/calculator'}>
           <NavItem>
-            <Glyphicon glyph='list-alt' /> TEY Calculator
+            <Glyphicon glyph='piggy-bank' /> TEY Calculator
           </NavItem>
         </LinkContainer>
         <LinkContainer to={'/quiz'}>
           <NavItem>
-            <Glyphicon glyph='gift' /> Quiz
+            <Glyphicon glyph='blackboard' /> Quiz
           </NavItem>
         </LinkContainer>
       </Nav>
