@@ -2,8 +2,14 @@ const requestQuizDataType = 'REQUEST_QUIZ_DATA';
 const receiveQuizDataType = 'RECEIVE_QUIZ_DATA';
 const quizQuestionChangeType = 'QUIZ_QUESTION_CHANGE';
 const quizGetResultType = 'QUIZ_GET_RESULT';
-const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [], selectedResult: null,  isLoading: false };
+const quizResetType = 'QUIZ_RESET';
+const initialState = { quizData:  null, currentQuestion: null, currentQuestionIndex: 0, selectedAnswers: [], selectedResult: null,  isLoading: false };
 
+
+const getQuestion = (quizData, questionIndex) => {
+  let q = quizData ? quizData.questions[questionIndex] : null;
+  return q;
+}
 
   export const actionCreators = {
     requestQuizData: () => async (dispatch, getState) => {    
@@ -28,14 +34,18 @@ const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [],
           dispatch({type: quizQuestionChangeType, questionAnswerIndex});
        }
        else {
-        dispatch({type: quizGetResultType, questionAnswerIndex});
+          //TODO: function to return result index
+          let answer = [...quiz.selectedAnswers, questionAnswerIndex];
+          const resultIndx = 0;
+          let result = quiz.quizData.results[resultIndx]; 
+          dispatch({type: quizGetResultType, answer, result});
       }
 
     },
-
-    
+    resetQuiz: () => (dispatch, getState) => {
+      dispatch({type: quizResetType});
+    }
   };
-
 
   export const reducer = (state, action) => {
     state = state || initialState;
@@ -51,38 +61,44 @@ const initialState = { quizData:  null, currentQuestion: 0, selectedAnswers: [],
       return {
         ...state,
         quizData: action.quizData,
+        currentQuestion:  getQuestion(action.quizData, state.currentQuestionIndex),  
         isLoading: false
       };
     }
 
 
     if (action.type === quizQuestionChangeType) {
-
+        var newQuesInx = state.currentQuestionIndex + 1;
         return {
           ...state,
-          currentQuestion: state.currentQuestion + 1,
+          currentQuestionIndex: newQuesInx,
+          currentQuestion:  getQuestion(state.quizData, newQuesInx),  
           selectedAnswers: [...state.selectedAnswers, action.questionAnswerIndex]
         };
       }  
 
 
     if (action.type === quizGetResultType) {
-        //TODO: function to return result index
-        let answer = [...state.selectedAnswers, action.questionAnswerIndex];
-        const resultIndx = 0;
       return {
         ...state,
-        selectedAnswers: answer,
-        selectedResult: state.quizData.results[0]
+        selectedAnswers: action.answer,
+        selectedResult: action.result
+      };
+    }
+
+    if(action.type === quizResetType) {
+      return {
+        ...state,
+        currentQuestionIndex: initialState.currentQuestionIndex, 
+        currentQuestion: getQuestion(state.quizData, initialState.currentQuestionIndex), 
+        selectedAnswers: initialState.selectedAnswers, 
+        selectedResult: initialState.selectedResult
       };
     }
   
     return state;
   };
     
-
-
-
 
 /*
 {
