@@ -18,3 +18,12 @@ $ cd static-app
 $ yarn install
 $ yarn run
 ```
+
+
+## Docker
+
+```
+$ docker build -t aspnetreact .
+$ docker run -d -p 8080:80 --name myapp aspnetreact
+
+```
