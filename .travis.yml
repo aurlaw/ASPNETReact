@@ -1,6 +1,6 @@
 sudo: required
 
-language: csharp
+language: node
 
 services:
   - docker
@@ -15,7 +15,7 @@ script:
 after_success:
   - docker --version  # document the version travis is using
   - docker build -t aurlaw/aurlaw-aspnet-react .  
-  - docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
+  - docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
   - docker tag aurlaw/aurlaw-aspnet-react:latest registry.heroku.com/aurlaw-aspnet-react/web:latest
   - docker push registry.heroku.com/aurlaw-aspnet-react/web:latest
 
