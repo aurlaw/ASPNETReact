@@ -1,7 +1,7 @@
 FROM microsoft/aspnetcore-build:2.0.5-2.1.4 AS build-env
 WORKDIR /app
 
-ENV ASPNETCORE_ENVIRONMENT="Development"
+ENV ASPNETCORE_ENVIRONMENT="Production"
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
@@ -14,4 +14,6 @@ RUN dotnet publish -c Release -o out
 FROM microsoft/aspnetcore:2.0
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "ASPNETReact.dll"]
+#ENTRYPOINT ["dotnet", "ASPNETReact.dll"]
+# Heroku
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet ASPNETReact.dll

@@ -1,5 +1,8 @@
 # ASPNETReact
 
+Playground for ASPNET Core 2 and React. 
+[Demo site](https://aurlaw-aspnet-react.herokuapp.com/)
+
 Set Dev env
 ```
 $ export ASPNETCORE_ENVIRONEMT = Development
@@ -26,4 +29,21 @@ $ yarn run
 $ docker build -t aspnetreact .
 $ docker run -d -p 8080:80 --name myapp aspnetreact
 
+```
+
+### Heroku
+
+```
+$heroku container:login
+$heroku create
+```
+The ```heroku create``` command will return an app name, copy it to use it for the next command.
+
+```
+$heroku container:push web --app ${YOUR_APP_NAME}
+```
+
+View App
+```
+$heroku open --app ${YOUR_APP_NAME}
 ```

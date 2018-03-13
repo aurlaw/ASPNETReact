@@ -1,0 +1,3 @@
+#!/bin/bash
+docker login --email=_ --username=_ --password=$HEROKU-AUTH-TOKEN registry.heroku.com
+docker push registry.heroku.com/aurlaw-aspnet-react/web:latest
