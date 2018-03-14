@@ -9,16 +9,15 @@ addons:
   apt:
     packages:
       - docker-ce
-      
+
 install:
-  - echo "install nothing!" # put your normal pre-testing installs here
+  - docker --version  # document the version travis is using
+  - docker build -t registry.heroku.com/aurlaw-aspnet-react/web .  
 
 script:
   - echo "no tests!" # put your normal testing scripts here
 
 after_success:
-  - docker --version  # document the version travis is using
-  - docker build -t registry.heroku.com/aurlaw-aspnet-react/web .  
   - docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
   - docker push registry.heroku.com/aurlaw-aspnet-react/web
 
