@@ -1,14 +1,12 @@
 sudo: required
 
-language: node
-
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-      - docker-ce
+# addons:
+#   apt:
+#     packages:
+#       - docker-ce
 
 install:
   - docker --version  # document the version travis is using
