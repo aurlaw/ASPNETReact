@@ -5,7 +5,11 @@ language: node
 services:
   - docker
 
-
+addons:
+  apt:
+    packages:
+      - docker-ce
+      
 install:
   - echo "install nothing!" # put your normal pre-testing installs here
 
