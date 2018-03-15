@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ASPNETReact.Models
@@ -16,6 +17,7 @@ namespace ASPNETReact.Models
 
     public class Question 
     {
+        public Guid Id {get;set;}
         public string Name {get;set;}
         public List<Answer> Answers {get;set;}
 
@@ -27,6 +29,7 @@ namespace ASPNETReact.Models
 
     public class Answer 
     {
+        public Guid Id {get;set;}
         public string Name {get;set;}
         public List<double> WeightedScore {get;set;}
 
@@ -38,6 +41,7 @@ namespace ASPNETReact.Models
 
     public class Result 
     {
+        public Guid Id {get;set;}
         public string Name {get;set;}
     }
 }

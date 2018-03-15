@@ -30,7 +30,7 @@ class Quiz extends Component {
     render() {
       if(this.props.selectedResult === null) 
       {
-            return (
+        return (
                 <div className="row">
                 <h1>Quiz</h1>
                 <Loader isLoading={this.props.isLoading} message="Loading Quiz...">
@@ -50,13 +50,12 @@ class Quiz extends Component {
 function QuizQuestionsContainer(props) {
     if(props === null || props.answers === undefined)
         return null;
-
     return (
         <div className="row">
             <Question name={props.name} />
                 {props.answers.map((answer, index) =>
-                    <div className="row buttons">
-                    <Answer key={index} value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
+                    <div className="row buttons" key={answer.id}>
+                    <Answer value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
                     </div>
                 )}
         </div>

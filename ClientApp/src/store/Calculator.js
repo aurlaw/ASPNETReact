@@ -1,9 +1,14 @@
-const requestCalculatorDataType = 'REQUEST_CALCULATOR_DATA';
-const receiveCalculatorDataType = 'RECEIVE_CALCULATOR_DATA';
-const taxBracketChange = 'TAX_BRACKET_CHANGE';
-const performCalculationType = 'PERFORM_CALCULATION';
-const initialState = { teYield: 0, lastUpdated: new Date(), taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
+import ReducerRegistry from './ReducerRegistry';
 
+const reducerName = 'calculator';
+const createActionName = name => `app/${reducerName}/${name}`;
+
+const requestCalculatorDataType = createActionName('REQUEST_CALCULATOR_DATA');
+const receiveCalculatorDataType = createActionName('RECEIVE_CALCULATOR_DATA');
+const taxBracketChange = createActionName('TAX_BRACKET_CHANGE');
+const performCalculationType = createActionName('PERFORM_CALCULATION');
+
+const initialState = { teYield: 0, lastUpdated: new Date(), taxBracketsIndex: 0, taxBrackets: [], taxEquivYield: 0, isLoading: false };
 
   export const actionCreators = {
     requestCalculatorData: () => async (dispatch, getState) => {    
@@ -78,4 +83,4 @@ const initialState = { teYield: 0, lastUpdated: new Date(), taxBracketsIndex: 0,
   
     return state;
   };
-    
+  ReducerRegistry.register(reducerName, reducer);   

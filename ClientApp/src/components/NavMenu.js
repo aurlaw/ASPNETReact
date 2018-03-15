@@ -8,7 +8,7 @@ import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 import './NavMenu.css';
 
 export default props => (
-  <sidebar>
+  <aside>
     <Navbar inverse fixedTop fluid collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
@@ -46,5 +46,5 @@ export default props => (
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  </sidebar>
+  </aside>
 );

@@ -1,5 +1,11 @@
-﻿const requestWeatherForecastsType = 'REQUEST_WEATHER_FORECASTS';
-const receiveWeatherForecastsType = 'RECEIVE_WEATHER_FORECASTS';
+﻿import ReducerRegistry from './ReducerRegistry';
+
+const reducerName = 'weatherForecasts';
+const createActionName = name => `app/${reducerName}/${name}`;
+
+
+const requestWeatherForecastsType = createActionName('REQUEST_WEATHER_FORECASTS');
+const receiveWeatherForecastsType = createActionName('RECEIVE_WEATHER_FORECASTS');
 const initialState = { forecasts: [], isLoading: false };
 
 export const actionCreators = {
@@ -41,3 +47,4 @@ export const reducer = (state, action) => {
 
   return state;
 };
+ReducerRegistry.register(reducerName, reducer);

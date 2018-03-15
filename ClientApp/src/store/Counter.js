@@ -1,5 +1,10 @@
-﻿const incrementCountType = 'INCREMENT_COUNT';
-const decrementCountType = 'DECREMENT_COUNT';
+﻿import ReducerRegistry from './ReducerRegistry';
+
+const reducerName = 'counter';
+const createActionName = name => `app/${reducerName}/${name}`;
+
+const incrementCountType = createActionName('INCREMENT_COUNT');
+const decrementCountType = createActionName('DECREMENT_COUNT');
 const initialState = { count: 0 };
 
 export const actionCreators = {
@@ -20,3 +25,5 @@ export const reducer = (state, action) => {
 
   return state;
 };
+
+ReducerRegistry.register(reducerName, reducer);

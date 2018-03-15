@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LoaderImage from '../assets/30.gif';
 import './RouteLoader.css';
 
