@@ -15,6 +15,13 @@ To launch ASPNET and React App
 $ dotnet run
 ```
 
+##  Storybook
+
+```
+$cd ClientApp
+$yarn install
+$yarn storybook
+```
 
 ## Static App (Dotnet Core-less)
 
@@ -33,7 +40,7 @@ $ docker run -d -p 8080:80 --name myapp aspnetreact
 
 ```
 
-### Heroku
+## Heroku
 
 ```
 $heroku container:login
@@ -50,8 +57,3 @@ View App
 $heroku open --app ${YOUR_APP_NAME}
 ```
 
-### TODO
-
-```
-https://storybook.js.org/basics/guide-react/
-```
