@@ -1,6 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import '../index.css';
+
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+
+
 import Footer from '../components/Footer';
 import ForecastsTable from '../components/forecast/ForecastsTable';
 import Calculator from '../components/calculator'
