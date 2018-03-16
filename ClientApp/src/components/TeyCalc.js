@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Helmet from "react-helmet/lib/Helmet";
 import { actionCreators } from '../store/Calculator';
 import Loader from './Loader'
 import {converters} from '../utils/conversion'
@@ -25,11 +26,12 @@ class TeyCalc extends Component {
   }
   render() {
     return (
-      <React.Fragment>
-        <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
-        <Loader isLoading={this.props.isLoading} message="Loading Calculator...">
-            <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />
-        </Loader>
+        <React.Fragment>
+        <Helmet title="Calculator" />
+            <h1 className="tey-calculator-header-title">National <small>Taxable Equivalent Yield<sup>1</sup></small></h1>
+            <Loader isLoading={this.props.isLoading} message="Loading Calculator...">
+                <Calculator {...this.props} onHandleChange={this.handleChange} onHandleCalculate={this.handleCalculate} />
+            </Loader>
       </React.Fragment>
     );
   }

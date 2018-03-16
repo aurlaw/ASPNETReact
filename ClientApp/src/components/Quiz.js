@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Helmet from "react-helmet/lib/Helmet";
 import { actionCreators } from '../store/Quiz';
 import Loader from './Loader'
 import Question from './quiz/Question'
@@ -28,22 +29,27 @@ class Quiz extends Component {
     }
 
     render() {
-      if(this.props.selectedResult === null) 
-      {
-        return (
+        const renderedComp = this.props.selectedResult === null ? 
+            (
                 <div className="row">
+                <Helmet title="Questionnaire" />    
                 <h1>Quiz</h1>
                 <Loader isLoading={this.props.isLoading} message="Loading Quiz...">
                     <QuizQuestionsContainer {...this.props.currentQuestion} onHandleAnswer={this.handleAnswer} />
                 </Loader>
                 </div>
+            ) : (
+                <React.Fragment>
+                    <Helmet title="Questionnaire Results" />  
+                    <QuizResult  {...this.props.selectedResult} onHandleReset={this.handleReset}  />
+                </React.Fragment>
             );
-        } else {
-            return (
-                <QuizResult  {...this.props.selectedResult} onHandleReset={this.handleReset}  />
-                );
-        }
-  }
+        return (
+            <React.Fragment>
+                {renderedComp}
+            </React.Fragment>
+        );    
+    }
 }
 
 

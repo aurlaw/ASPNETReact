@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Helmet from "react-helmet/lib/Helmet";
 import { actionCreators } from '../store/WeatherForecasts';
 
 class FetchData extends Component {
@@ -20,6 +21,7 @@ class FetchData extends Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet title="Weather Forecast" />
         <h1>Weather forecast</h1>
         <p>This component demonstrates fetching data from the server and working with URL parameters.</p>
         {renderForecastsTable(this.props)}
