@@ -4,30 +4,25 @@ import Loadable from 'react-loadable';
 
 import RouteLoader from './components/RouteLoader';
 import Layout from './components/Layout';
-// import Home from './components/Home';
-// import Counter from './components/Counter';
-// import FetchData from './components/FetchData';
-// import TeyCalc from './components/TeyCalc'
-// import Quiz from './components/Quiz'
 
 const Home = Loadable({
-  loader: () => import('./components/Home'),
+  loader: () => import(/* webpackChunkName: 'Home' */ './components/Home'),
   loading: RouteLoader,
 });
 const Counter = Loadable({
-  loader: () => import('./components/Counter'),
+  loader: () => import(/* webpackChunkName: 'Counter' */ './components/Counter'),
   loading: RouteLoader,
 });
 const FetchData = Loadable({
-  loader: () => import('./components/FetchData'),
+  loader: () => import(/* webpackChunkName: 'Forecasts' */ './components/FetchData'),
   loading: RouteLoader,
 });
 const TeyCalc = Loadable({
-  loader: () => import('./components/TeyCalc'),
+  loader: () => import(/* webpackChunkName: 'TeyCalc' */ './components/TeyCalc'),
   loading: RouteLoader,
 });
 const Quiz = Loadable({
-  loader: () => import('./components/Quiz'),
+  loader: () => import(/* webpackChunkName: 'Quiz' */ './components/Quiz'),
   loading: RouteLoader,
 });
 

@@ -3,9 +3,9 @@ import LoaderImage from '../assets/30.gif';
 
 
 export default class Loader extends Component {
-    // constructor(props) {
-    //     super(props);
-    //   }
+    constructor(props) {
+        super(props);
+      }
 
       render() {
             if(this.props.isLoading) {

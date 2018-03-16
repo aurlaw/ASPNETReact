@@ -3,9 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Helmet from "react-helmet/lib/Helmet";
 import { actionCreators } from '../store/Quiz';
-import Loader from './Loader'
-import Question from './quiz/Question'
-import Answer from './quiz/Answer'
+// import Loader from './Loader'
+// import Question from './quiz/Question'
+// import Answer from './quiz/Answer'
+import QuizQuestionsAnswersContainer from './quiz/QuizQuestionsAnswersContainer'
 import QuizResult from './quiz/QuizResults'
 
 
@@ -31,13 +32,10 @@ class Quiz extends Component {
     render() {
         const renderedComp = this.props.selectedResult === null ? 
             (
-                <div className="row">
-                <Helmet title="Questionnaire" />    
-                <h1>Quiz</h1>
-                <Loader isLoading={this.props.isLoading} message="Loading Quiz...">
-                    <QuizQuestionsContainer {...this.props.currentQuestion} onHandleAnswer={this.handleAnswer} />
-                </Loader>
-                </div>
+                <React.Fragment>
+                    <Helmet title="Questionnaire" />    
+                    <QuizQuestionsAnswersContainer {...this.props.currentQuestion} isLoading={this.props.isLoading} onHandleAnswer={this.handleAnswer}/>
+                </React.Fragment>
             ) : (
                 <React.Fragment>
                     <Helmet title="Questionnaire Results" />  
@@ -53,20 +51,20 @@ class Quiz extends Component {
 }
 
 
-function QuizQuestionsContainer(props) {
-    if(props === null || props.answers === undefined)
-        return null;
-    return (
-        <div className="row">
-            <Question name={props.name} />
-                {props.answers.map((answer, index) =>
-                    <div className="row buttons" key={answer.id}>
-                    <Answer value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
-                    </div>
-                )}
-        </div>
-    );
-  }
+// function QuizQuestionsContainer(props) {
+//     if(props === null || props.answers === undefined)
+//         return null;
+//     return (
+//         <div className="row">
+//             <Question name={props.name} />
+//                 {props.answers.map((answer, index) =>
+//                     <div className="row buttons" key={answer.id}>
+//                     <Answer value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
+//                     </div>
+//                 )}
+//         </div>
+//     );
+//   }
 
   export default connect(
     state => state.quiz,

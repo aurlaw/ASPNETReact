@@ -7,7 +7,7 @@ import NavMenu from './NavMenu';
 import Footer from './Footer'
 
 export default props => (
-  <main>
+<main>
   <Grid fluid>
     <Row>
       <Col sm={3}>
@@ -17,10 +17,12 @@ export default props => (
         <Helmet titleTemplate="%s | ASPNET React Demos">
           <meta charSet="utf-8" />
         </Helmet>
+        <article>
           {props.children}
-          <Footer />
+        </article>
+        <Footer />
       </Col>
     </Row>
   </Grid>
-  </main>
+</main>
 );
