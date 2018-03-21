@@ -1,0 +1,49 @@
+.list-card {
+    width: 100%;
+    box-shadow: 10px 10px 11px -6px;
+}
+.list-card .list-card-link {
+    display: block;
+    /* border: 1px solid #04193a; */
+    background-color: #163870;
+    text-align: center;
+    font-size: 2em;
+    color: #fff;
+}
+.list-card .list-card-link:visited, 
+.list-card .list-card-link:hover, 
+.list-card .list-card-link:active {
+    text-decoration: none;
+    color: #fff;
+}
+.list-card .list-card-link:hover {
+    background-color: #5e84c1;
+    
+}
+.list-card .list-card-link span,
+.list-card-add .list-card-link span {
+    display: block;
+    min-height: 100px;
+    padding: 2%;
+    /* margin: 2% auto; */
+}
+
+
+.list-card-add {width: 100%;}
+
+.list-card-add  .list-card-link {
+    display: block;
+    border: 1px solid #04193a;
+    background-color: #c3d1e7;
+    text-align: center;
+    font-size: 2em;
+    color: #04193a;
+}
+
+
+.list-card-add .list-card-link:visited, 
+.list-card-add .list-card-link:hover, 
+.list-card-add .list-card-link:active {
+    text-decoration: none;
+    color: #04193a;
+}
