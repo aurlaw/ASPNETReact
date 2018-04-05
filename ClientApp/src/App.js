@@ -9,10 +9,6 @@ const Home = Loadable({
   loader: () => import(/* webpackChunkName: 'Home' */ './components/Home'),
   loading: RouteLoader,
 });
-const Counter = Loadable({
-  loader: () => import(/* webpackChunkName: 'Counter' */ './components/Counter'),
-  loading: RouteLoader,
-});
 const FetchData = Loadable({
   loader: () => import(/* webpackChunkName: 'Forecasts' */ './components/FetchData'),
   loading: RouteLoader,
@@ -30,7 +26,6 @@ const Quiz = Loadable({
 export default () => (
   <Layout>
     <Route exact path='/' component={Home} />
-    <Route path='/counter' component={Counter} />
     <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
     <Route path='/calculator' component={TeyCalc} />
     <Route path='/quiz' component={Quiz} />

@@ -11,11 +11,11 @@ function QuizQuestionsContainer(props) {
     return (
         <div className="row">
             <Question name={props.name} />
+            <div className="row" >
                 {props.answers.map((answer, index) =>
-                    <div className="row buttons" key={answer.id}>
-                    <Answer value={index} className="col-sm-6 btn btn-info" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
-                    </div>
+                    <Answer key={answer.id} value={index} className="col-xs-12 col-md-5 btn btn-info grid-btn" name={answer.name} onHandleAnswer={props.onHandleAnswer} />    
                 )}
+            </div>
         </div>
     );
 }

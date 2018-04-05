@@ -20,9 +20,9 @@ export default props => (
         <article>
           {props.children}
         </article>
-        <Footer />
       </Col>
     </Row>
   </Grid>
+  <Footer />
 </main>
 );

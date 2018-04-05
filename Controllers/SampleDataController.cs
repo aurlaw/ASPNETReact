@@ -52,44 +52,44 @@ namespace ASPNETReact.Controllers
             questions.Add(new Question{Name  ="Question 4", Id= Guid.NewGuid()});
 
             //Q1
-            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 1", Id= Guid.NewGuid()});
+            questions[0].Answers.Add(new Answer{Name = "Answer A", Id= Guid.NewGuid()});
             questions[0].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
-            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 2", Id= Guid.NewGuid()});
+            questions[0].Answers.Add(new Answer{Name = "Answer B", Id= Guid.NewGuid()});
             questions[0].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
-            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 3", Id= Guid.NewGuid()});
+            questions[0].Answers.Add(new Answer{Name = "Answer C", Id= Guid.NewGuid()});
             questions[0].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
-            questions[0].Answers.Add(new Answer{Name = "Q1 Answer 4", Id= Guid.NewGuid()});
+            questions[0].Answers.Add(new Answer{Name = "Answer D", Id= Guid.NewGuid()});
             questions[0].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
 
 
             //Q2
-            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 1", Id= Guid.NewGuid()});
+            questions[1].Answers.Add(new Answer{Name = "Answer E", Id= Guid.NewGuid()});
             questions[1].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
-            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 2", Id= Guid.NewGuid()});
+            questions[1].Answers.Add(new Answer{Name = "Answer F", Id= Guid.NewGuid()});
             questions[1].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
-            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 3", Id= Guid.NewGuid()});
+            questions[1].Answers.Add(new Answer{Name = "Answer G", Id= Guid.NewGuid()});
             questions[1].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
-            questions[1].Answers.Add(new Answer{Name = "Q2 Answer 4", Id= Guid.NewGuid()});
+            questions[1].Answers.Add(new Answer{Name = "Answer H", Id= Guid.NewGuid()});
             questions[1].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
 
             //Q3
-            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 1", Id= Guid.NewGuid()});
+            questions[2].Answers.Add(new Answer{Name = "Answer I", Id= Guid.NewGuid()});
             questions[2].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
-            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 2", Id= Guid.NewGuid()});
+            questions[2].Answers.Add(new Answer{Name = "Answer J", Id= Guid.NewGuid()});
             questions[2].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
-            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 3", Id= Guid.NewGuid()});
+            questions[2].Answers.Add(new Answer{Name = "Answer K", Id= Guid.NewGuid()});
             questions[2].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
-            questions[2].Answers.Add(new Answer{Name = "Q3 Answer 4", Id= Guid.NewGuid()});
+            questions[2].Answers.Add(new Answer{Name = "Answer L", Id= Guid.NewGuid()});
             questions[2].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
 
             //Q4
-            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 1", Id= Guid.NewGuid()});
+            questions[3].Answers.Add(new Answer{Name = "Answer M", Id= Guid.NewGuid()});
             questions[3].Answers[0].WeightedScore.AddRange(new []{0.75, 0.5, 0.25});
-            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 2", Id= Guid.NewGuid()});
+            questions[3].Answers.Add(new Answer{Name = "Answer N", Id= Guid.NewGuid()});
             questions[3].Answers[1].WeightedScore.AddRange(new []{0.5, 0.25, 0.75});
-            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 3", Id= Guid.NewGuid()});
+            questions[3].Answers.Add(new Answer{Name = "Answer O", Id= Guid.NewGuid()});
             questions[3].Answers[2].WeightedScore.AddRange(new []{.25, 0.75, 0.5});
-            questions[3].Answers.Add(new Answer{Name = "Q4 Answer 4", Id= Guid.NewGuid()});
+            questions[3].Answers.Add(new Answer{Name = "Answer P", Id= Guid.NewGuid()});
             questions[3].Answers[3].WeightedScore.AddRange(new []{.25, 0.5, 0.51});
 
 

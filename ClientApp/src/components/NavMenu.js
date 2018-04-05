@@ -9,7 +9,7 @@ import './NavMenu.css';
 
 export default props => (
   <aside>
-    <Navbar inverse fixedTop fluid collapseOnSelect>
+    <Navbar inverse fixedTop fluid collapseOnSelect className="navbar-inverse-alt">
       <Navbar.Header>
         <Navbar.Brand>
           <Link to={'/'}>ASPNET React Demos</Link>
@@ -21,11 +21,6 @@ export default props => (
           <LinkContainer to={'/'} exact>
             <NavItem>
               <Glyphicon glyph='home' /> Home
-            </NavItem>
-          </LinkContainer>
-          <LinkContainer to={'/counter'}>
-            <NavItem>
-              <Glyphicon glyph='education' /> Counter
             </NavItem>
           </LinkContainer>
           <LinkContainer to={'/fetchdata'}>

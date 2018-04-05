@@ -30,7 +30,7 @@ export default props => (
         <hr/>
         Equiv Yield: <strong>{props.taxEquivYield.toFixed(2)} %</strong>
         <div className="form-group">
-            <button type="button" className="tey-btn tey-btn--calculate" onClick={props.onHandleCalculate}>Calculate</button>
+            <button type="button" className="btn btn-primary" onClick={props.onHandleCalculate}>Calculate</button>
         </div>
     </fieldset>   
 );
