@@ -50,6 +50,7 @@ The ```heroku create``` command will return an app name, copy it to use it for t
 
 ```
 $heroku container:push web --app ${YOUR_APP_NAME}
+$heroku container:release web --app ${YOUR_APP_NAME}
 ```
 
 View App
