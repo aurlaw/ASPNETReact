@@ -3,7 +3,7 @@ import './Footer.css';
 
 export default props => (
     <footer>
-        Last Updated: 8.5.2018
+        Last Updated: 3.12.2019
     </footer>
 
 )

@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/aurlaw/ASPNETReact.svg?branch=master)](https://travis-ci.org/aurlaw/ASPNETReact)
 
 
-Playground for ASPNET Core 2 and React. 
+Playground for ASPNET Core 2.2 and React. 
 [Demo site](https://aurlaw-aspnet-react.herokuapp.com/)
 
 Set Dev env
