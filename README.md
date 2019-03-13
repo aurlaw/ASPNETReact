@@ -34,11 +34,32 @@ $ yarn run
 
 ## Docker
 
-```
-$ docker build -t aspnetreact .
-$ docker run -d -p 8080:80 --name myapp aspnetreact
 
 ```
+$ docker build -t aurlaw/aspnetreact:1.0 .
+$ docker run -d -p 9090:80 aurlaw/aspnetreact:1.0
+
+```
+
+
+### Kubernetes
+
+Devlopment Environment
+
+Deployment
+```
+kubectl apply -f deployment-local.yamml
+```
+
+Ingress
+```
+kubectl apply -f ingress-local.yamml
+```
+
+
+
+
+
 
 ## Heroku
 

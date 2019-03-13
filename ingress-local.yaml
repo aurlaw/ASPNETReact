@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: aurlaw-react-core
+  # namespace: aurlawcom
+  annotations: {
+    'kubernetes.io/ingress.class': nginx
+  }
+spec:
+  rules:
+  - host: local-react-core.aurlaw.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: aurlaw-react-core
+          servicePort: 80
