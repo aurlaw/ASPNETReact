@@ -15,9 +15,9 @@ install:
 script:
   - echo "no tests!" # put your normal testing scripts here
 
-after_success:
-  - docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
-  - docker push registry.heroku.com/aurlaw-aspnet-react/web
+# after_success:
+#   - docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
+#   - docker push registry.heroku.com/aurlaw-aspnet-react/web
 
 
 # deploy:
